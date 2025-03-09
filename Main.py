@@ -1,16 +1,25 @@
 import pygame
 import sys
 import time
-#from Packager import QUITE
+from Packager import Photo, music
 
 
 def Main():
+
     pygame.init()                                   #初始化pygame
-    size = width,height = 1500,1200                 #设置窗口大小
+    pygame.mixer.init()                             #mixer模块初始化
+    
+    pygame.mixer.music.load(f"./Music//{music.m()}")  #加载音乐
+    pygame.mixer.music.play(0)                      #播放1次
+    #pygame.mixer.music.queue("./Music//Happy brithday to you.oga")  #将音乐加入播放列表
+
+    size = width,height = 1700,1200                 #设置窗口大小
     color = (0,0,0)                                 #设置背景颜色 黑色
-    image = pygame.image.load("./Image//1.jpg")     #加载图片
+
+    image = pygame.image.load(f"./Image//{Photo.n()}")     #加载图片
     imagerect = image.get_rect()                    #图片显示的矩形区域
-    speed = [5,5]                                   #X轴和Y轴的移动距离
+
+    speed = [0,5]                                   #X轴和Y轴的移动距离
     screen = pygame.display.set_mode(size)          #显示窗口
     
     i = -1
